@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import './FeedbackOptions.css';
 
 export default function FeedbackOptions({ options, onLeaveFeedback }) {
@@ -5,9 +6,14 @@ export default function FeedbackOptions({ options, onLeaveFeedback }) {
     <div className="buttons">
       {options.map((option) => (
         <button key={option} onClick={() => onLeaveFeedback(option)}>
-          {option.charAt(0).toUpperCase() + option.slice(1)}
+          {option}
         </button>
       ))}
     </div>
   );
 }
+
+FeedbackOptions.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onLeaveFeedback: PropTypes.func.isRequired,
+};
